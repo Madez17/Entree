@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_15_234901) do
+ActiveRecord::Schema.define(version: 2019_10_16_003720) do
+
+  create_table "appointments", force: :cascade do |t|
+    t.string "message"
+    t.integer "reason_id"
+    t.integer "user_id"
+    t.integer "visitor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reason_id"], name: "index_appointments_on_reason_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+    t.index ["visitor_id"], name: "index_appointments_on_visitor_id"
+  end
 
   create_table "reasons", force: :cascade do |t|
     t.string "description"
