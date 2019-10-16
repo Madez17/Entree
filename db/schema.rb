@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_15_221122) do
+ActiveRecord::Schema.define(version: 2019_10_15_234901) do
 
   create_table "reasons", force: :cascade do |t|
     t.string "description"
@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(version: 2019_10_15_221122) do
     t.string "text", limit: 70
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "roles_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "role_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
