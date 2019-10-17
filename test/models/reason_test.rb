@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class ReasonTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "The message cant be blank" do
+      reason = Reason.create(description:"")
+      assert_not reason.save
+  end 
 end
