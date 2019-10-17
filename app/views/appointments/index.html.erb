@@ -1,10 +1,54 @@
-<h2>Hey User </h2>
-<% @users.each do |user|%>
-    <p><%=user.email%></p>
-<%end%>
-<p>Notify to your guest</p>
-<%= form_with model: @appointment do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :lastname %>
-  <%= f.submit "Create" %>
-<% end %>
+<div class="row" id="mycontainer">
+        <div class="content col s6 center-align red white-text" >
+            <h1 style= "font-family: 'Poiret One', cursive;">Entree</h1>
+            <h3>...</h3>
+            <h3 style= "font-family: 'Poiret One', cursive;">"Ensure your access"</h3>
+        </div>
+        
+        <%= form_with model: @appointment, class: "content col s6 center-align valign-wrapper indigo darken-4 white-text" do |f| %>
+            <div class="container">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <%= f.label :name %>
+                        <%= f.text_field :name, class: "validate"%>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <%= f.label :CC %>
+                        <%= f.text_field :identification, class: "validate" %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <%= f.label :email %>
+                        <%= f.search_field :email, class: "validate" %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field paddingOptions col s12">
+                        <%= collection_select(:appointment, :reason_id, @reasons, :id, :description) %>
+                    </div>
+                </div>
+
+                <div class="row">
+                </div>
+                
+            </div>
+        <% end %>
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
+
+<script>
+(function($){
+  $(function(){
+    // Plugin initialization
+    $('select').not('.disabled').formSelect();
+  });
+})(jQuery); // end of jQuery name space
+</script>
+
