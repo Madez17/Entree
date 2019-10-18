@@ -4,12 +4,36 @@ class AppointmentsController < ApplicationController
         @users = User.all
         @appointment = Appointment.new
     end
+    
+    def create
+       vistor = visitor_parameters
+       @visitor = Visitor.find_by(identification: vistor[:identification])
+       unless @visitor
+            @visitor = Visitor.new(vistor)
+            unless  @visitor.save
+                #response errors
+            end
+       end
+       appointment = Appointment.new(appointment_parameter)
+       appointment.visitor_id = @visitor.id
+       if appointment.save
+            redirect_to root_path
+       else
+            #responder con errores
+       end
+    end
 
-
-
-    def get_user
-        p "aqui estoy"
+    def get_users
         @users = User.select(:name, :lastname, :id).all
         render json: @users
+    end
+
+    private
+    def visitor_parameters
+        params.require(:visitor).permit(:name, :lastname, :identification)
+    end
+
+    def appointment_parameter
+        params.require(:appointment).permit(:reason_id, :message, :user_id)
     end
 end

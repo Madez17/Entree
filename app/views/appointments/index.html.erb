@@ -9,25 +9,26 @@
             <div class="container">
                 <div class="row">
                     <div class="input-field col s12">
-                        <%= f.label :name %>
-                        <%= f.text_field :name, class: "validate"%>
+                        <%= label(:visitor, :name) %>
+                        <%= text_field(:visitor, :name, class: "validate")%>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <%= f.label :CC %>
-                        <%= f.text_field :identification, class: "validate" %>
+                        <%= label(:visitor, :lastname) %>
+                        <%= text_field(:visitor, :lastname, class: "validate")%>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <%= f.label :email %>
-                        <%= f.search_field :email, class: "validate" %>
+                        <%= label(:visitor, :identification) %>
+                        <%= text_field(:visitor, :identification, class: "validate")%>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field paddingOptions col s12">
                         <%= collection_select(:appointment, :reason_id, @reasons, :id, :description) %>
+                         <%= f.label :reason_id %>
                     </div>
                 </div>
 
@@ -36,11 +37,19 @@
                     <div class="row">                
                         <div class="input-field col s12">                       
                         <input type="text" id="demo-auto" class="autocomplete">                
-                        <label for="demo-auto">Enter a Letter</label>                
+                        <label for="demo-auto">Guest</label>                
                         </div>                
                     </div>               
                 </div>
-
+                <div class="row">
+                    <div class="input-field col s12">
+                        <%= f.text_area :message, class:"materialize-textarea"%>
+                        <%= f.label :message %>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
                 <%= f.hidden_field :user_id, :value => nil %>
                 
             </div>      
@@ -54,7 +63,7 @@
     function getRemote() {
         return JSON.parse($.ajax({
             type: "GET",
-            url: '/appointments/get_user',
+            url: '/appointments/get_users',
             async: false
         }).responseText);
     }
