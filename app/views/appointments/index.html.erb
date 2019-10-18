@@ -31,24 +31,51 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row"> 
+                    <div class="col s12">                
+                    <div class="row">                
+                        <div class="input-field col s12">                       
+                        <input type="text" id="demo-auto" class="autocomplete">                
+                        <label for="demo-auto">Enter a Letter</label>                
+                        </div>                
+                    </div>               
                 </div>
+
+                <%= f.hidden_field :user_id, :value => nil %>
                 
-            </div>
+            </div>      
         <% end %>
-
-
-    </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-   <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
 
 <script>
-(function($){
-  $(function(){
-    // Plugin initialization
-    $('select').not('.disabled').formSelect();
-  });
-})(jQuery); // end of jQuery name space
+    function getRemote() {
+        return JSON.parse($.ajax({
+            type: "GET",
+            url: '/appointments/get_user',
+            async: false
+        }).responseText);
+    }
+
+    $(document).ready(function(){
+        // Plugin initialization
+        $('select').not('.disabled').formSelect();
+        values = getRemote()        
+        values = values.reduce(function(obj, item){ 
+            key = `${item.id} ${item.name} ${item.lastname}`
+            obj[key] = null;
+            return obj 
+            }, {})     
+        $('input.autocomplete').autocomplete({ 
+            data: values,
+            onAutocomplete: function(data){
+                $('#appointment_user_id').val(data.split(' ')[0])
+            } ,
+            limit: 3 
+        });
+    $('ul.dropdown-content').css('opacity', 1);
+    })
 </script>
 
