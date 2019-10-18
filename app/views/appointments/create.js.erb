@@ -1,0 +1,11 @@
+<% if @errors%>
+    <% @errors.full_messages.each do |error|%>
+        M.toast({html: '<%= j error %>', classes: 'rounded'})
+    <% end %>
+<% else %>
+    $('form').trigger('reset');
+    $('.modal').modal('open');
+    setTimeout(()=> {
+        $('.modal').modal('close');
+    }, 3000)
+<% end %>

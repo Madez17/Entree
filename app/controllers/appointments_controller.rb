@@ -11,15 +11,15 @@ class AppointmentsController < ApplicationController
        unless @visitor
             @visitor = Visitor.new(vistor)
             unless  @visitor.save
-                #response errors
+                @errors = @visitor.errors
+                render "create" and return
             end
        end
        appointment = Appointment.new(appointment_parameter)
        appointment.visitor_id = @visitor.id
-       if appointment.save
-            redirect_to root_path
-       else
-            #responder con errores
+       unless appointment.save
+            @errors = appointment.errors
+            render "create" and return
        end
     end
 
