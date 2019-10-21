@@ -1,0 +1,128 @@
+<div></div>    
+
+<div class="row flex" id="mycontainer">
+        <div class="content col s12 m5 title_app red-color" >
+            <h1 style= "font-family: 'Poiret One', cursive;">Entrée</h1>
+            <h3>...</h3>
+            <h3 style= "font-family: 'Poiret One', cursive;">"Ensure your access"</h3> 
+        </div>
+        
+        <%= form_with model: @appointment, html:{autocomplete:"off"}, class: "content col s12 m7 title_app blue-color" do |f| %>
+            <div class="container">
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <%= label(:visitor, :name) %>
+                        <%= text_field(:visitor, :name, class: "validate")%>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <%= label(:visitor, :lastname) %>
+                        <%= text_field(:visitor, :lastname, class: "validate")%>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <%= label(:visitor, :identification) %>
+                        <%= text_field(:visitor, :identification, class: "validate")%>
+                    </div>
+                    <div class="input-field paddingOptions col s12 m6">
+                        <%= collection_select(:appointment, :reason_id, @reasons, :id, :description) %>
+                         <%= f.label :reason_id %>
+                    </div>
+                </div>
+
+                <div class="row"> 
+                    <div class="col s12">                
+                    <div class="row">                
+                        <div class="input-field col icon-search s12 m12">                       
+                        <input type="text" id="demo-auto" class="autocomplete">                          <i class="search material-icons">search</i>  
+                        <label for="demo-auto">Guest</label>                
+                        </div>                
+                    </div>               
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12">
+                        <%= f.text_area :message, class:"materialize-textarea"%>
+                        <%= f.label :message %>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+                <%= f.hidden_field :user_id, :value => nil %>
+                
+            </div>      
+        <% end %>
+</div>
+
+  <!-- Modal Email -->
+  <div id="modal" class="modal white">
+    <div class="modal-content container">
+       
+    </div>
+  </div>
+
+  <!-- Modal Photo -->
+  <div id="modal2" class="modal white">
+    <div class="modal-content container">
+            
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <div id="mywebcam"></div>
+                    <p>
+
+                    <button onclick="takescreenshot()" class="btn waves-effect waves-light">Take a photo</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+©
+    </div>
+  </div>
+
+<script>
+    Webcam.set({
+        width: 320,
+        height: 240,
+        dest_width: 640,
+        dest_height: 480,
+        image_format: 'jpeg',
+        jpeg_quality: 90,
+        force_flash: false,
+        jpeg_quality: 90
+        })
+        Webcam.attach('#mywebcam');
+        function takescreenshot(){
+            Webcam.snap(function(data){
+            document.getElementById('results').innerHTML = "<h2>Here is you image: </h2><img width='300' src='"+data+"'>";
+        })
+    }
+
+    function getRemote() {
+        return JSON.parse($.ajax({
+            type: "GET",
+            url: '/appointments/get_users',
+            async: false
+        }).responseText);
+    }
+    $(document).ready(function(){
+        // Plugin initialization
+        $('select').not('.disabled').formSelect();
+        values = getRemote()        
+        values = values.reduce(function(obj, item){ 
+            key = `${item.id} ${item.name} ${item.lastname}`
+            obj[key] = null;
+            return obj 
+            }, {})     
+        $('input.autocomplete').autocomplete({ 
+            data: values,
+            onAutocomplete: function(data){
+                $('#appointment_user_id').val(data.split(' ')[0])
+            } ,
+            limit: 3 
+        });
+    $('ul.dropdown-content').css('opacity', 1);
+    $('#modal').modal();
+    $('#modal2').modal();
+    })
+</script>
