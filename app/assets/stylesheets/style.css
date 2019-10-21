@@ -83,3 +83,16 @@ body{
 #mywebcam {
     margin: 0 auto 45px auto;
 }
+.take_button{
+    background: transparent;
+    margin: 0 auto;
+}
+button.btn-floating{
+    border: 1px solid white;
+    background: red;
+    height: 35px;
+    width: 35px;
+}
+.btn-floating:hover {
+    background-color: #04cb26;
+} 
