@@ -9,13 +9,13 @@
 </head>
 <body>
     <div class="row flex" id="mycontainer">
-        <div class="content col s12 m6 title_app red-color" >
+        <div class="content col s12 m5 title_app red-color" >
             <h1 style= "font-family: 'Poiret One', cursive;">Entrée</h1>
             <h3>...</h3>
             <h3 style= "font-family: 'Poiret One', cursive;">"Ensure your access"</h3> 
         </div>
         
-        <%= form_with model: @appointment, html:{autocomplete:"off"}, class: "content col s12 m6 title_app blue-color" do |f| %>
+        <%= form_with model: @appointment, html:{autocomplete:"off"}, class: "content col s12 m7 title_app blue-color" do |f| %>
             <div class="container">
                 <div class="row">
                     <div class="input-field col s12 m6">
@@ -79,7 +79,6 @@
             async: false
         }).responseText);
     }
-
     $(document).ready(function(){
         // Plugin initialization
         $('select').not('.disabled').formSelect();
