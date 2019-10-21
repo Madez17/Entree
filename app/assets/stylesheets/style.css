@@ -79,3 +79,7 @@ body{
     color:#0D1946;
     line-height: 4px;
 }
+
+#mywebcam {
+    margin: 0 auto 45px auto;
+}

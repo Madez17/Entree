@@ -62,15 +62,50 @@
         <% end %>
 </div>
 
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal white">
+  <!-- Modal Email -->
+  <div id="modal" class="modal white">
     <div class="modal-content container">
        
     </div>
   </div>
 
+  <!-- Modal Photo -->
+  <div id="modal2" class="modal white">
+    <div class="modal-content container">
+            
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <div id="mywebcam"></div>
+                    <p>
+
+                    <button onclick="takescreenshot()" class="btn waves-effect waves-light">Take a photo</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+©
+    </div>
+  </div>
 
 <script>
+    Webcam.set({
+        width: 320,
+        height: 240,
+        dest_width: 640,
+        dest_height: 480,
+        image_format: 'jpeg',
+        jpeg_quality: 90,
+        force_flash: false,
+        jpeg_quality: 90
+        })
+        Webcam.attach('#mywebcam');
+        function takescreenshot(){
+            Webcam.snap(function(data){
+            document.getElementById('results').innerHTML = "<h2>Here is you image: </h2><img width='300' src='"+data+"'>";
+        })
+    }
+
     function getRemote() {
         return JSON.parse($.ajax({
             type: "GET",
@@ -95,7 +130,8 @@
             limit: 3 
         });
     $('ul.dropdown-content').css('opacity', 1);
-    $('.modal').modal();
+    $('#modal').modal();
+    $('#modal2').modal();
     })
 </script>
 </body>
