@@ -4,8 +4,10 @@
     <% end %>
 <% else %>
     $('form').trigger('reset');
+    $('.modal-content').append('<%=j render "send_email"%>')
     $('.modal').modal('open');
     setTimeout(()=> {
         $('.modal').modal('close');
-    }, 3000)
+        $('.modal-content').empty();
+    }, 5000)
 <% end %>

@@ -21,7 +21,7 @@ class AppointmentsController < ApplicationController
             @errors = appointment.errors
             render "create" and return
        end
-       AppointmentMailer.appointment_email(appointment).deliver_now
+    #    AppointmentMailer.appointment_email(appointment).deliver_now
     end
 
     def get_users
