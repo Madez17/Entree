@@ -64,3 +64,4 @@ gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons' 
 gem 'jquery-rails'
 gem "letter_opener", group: :development
+gem 'premailer-rails'
