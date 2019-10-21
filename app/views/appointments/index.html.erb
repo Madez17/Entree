@@ -8,35 +8,31 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="row" id="mycontainer">
-        <div id="content_left" style="height: 100vh" class="content col s6 center-align red white-text" >
+    <div class="row flex" id="mycontainer">
+        <div class="content col s12 m6 title_app red-color" >
             <h1 style= "font-family: 'Poiret One', cursive;">Entree</h1>
             <h3>...</h3>
-            <h3 style= "font-family: 'Poiret One', cursive;">"Ensure your access"</h3>
+            <h3 style= "font-family: 'Poiret One', cursive;">"Ensure your access"</h3> 
         </div>
         
-        <%= form_with model: @appointment, id: "content_right", class: "content col s6 center-align valign-wrapper indigo darken-4 white-text" do |f| %>
+        <%= form_with model: @appointment, html:{autocomplete:"off"}, class: "content col s12 m6 title_app blue-color" do |f| %>
             <div class="container">
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 m6">
                         <%= label(:visitor, :name) %>
                         <%= text_field(:visitor, :name, class: "validate")%>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 m6">
                         <%= label(:visitor, :lastname) %>
                         <%= text_field(:visitor, :lastname, class: "validate")%>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 m6">
                         <%= label(:visitor, :identification) %>
                         <%= text_field(:visitor, :identification, class: "validate")%>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field paddingOptions col s12">
+                    <div class="input-field paddingOptions col s12 m6">
                         <%= collection_select(:appointment, :reason_id, @reasons, :id, :description) %>
                          <%= f.label :reason_id %>
                     </div>
@@ -45,14 +41,14 @@
                 <div class="row"> 
                     <div class="col s12">                
                     <div class="row">                
-                        <div class="input-field col s12">                       
-                        <input type="text" id="demo-auto" class="autocomplete">                
+                        <div class="input-field col icon-search s12 m12">                       
+                        <input type="text" id="demo-auto" class="autocomplete">                          <i class="search material-icons">search</i>  
                         <label for="demo-auto">Guest</label>                
                         </div>                
                     </div>               
                 </div>
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 m12">
                         <%= f.text_area :message, class:"materialize-textarea"%>
                         <%= f.label :message %>
                     </div>
