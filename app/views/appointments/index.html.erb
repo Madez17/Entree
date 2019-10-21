@@ -11,7 +11,7 @@
             <div class="container takePhoto">
                 <div class="row">
                     <div class="col s12 m12">
-                        <button class="take_button btn-floating" href="#modal2">
+                        <button class="take_button btn-floating" id="camera_launch" href="#modal2">
                         </button>
                     </div>
                 </div>
@@ -97,10 +97,10 @@
         force_flash: false,
         jpeg_quality: 90
         })
-        Webcam.attach('#mywebcam');
-        function takescreenshot(){
-            Webcam.snap(function(data){
-            document.getElementById('results').innerHTML = "<h2>Here is you image: </h2><img width='300' src='"+data+"'>";
+    Webcam.attach('#mywebcam');
+    function takescreenshot(){
+        Webcam.snap(function(data){
+            $('#results').append("<h2>Here is you image: </h2><img width='300' src='"+data+"'>");
         })
     }
 
@@ -130,5 +130,9 @@
     $('ul.dropdown-content').css('opacity', 1);
     $('#modal').modal();
     $('#modal2').modal();
+    $('#camera_launch').on('click', function(e){
+        e.preventDefault();
+        $('#modal2').modal('open');    
+    })
     })
 </script>
