@@ -24,4 +24,4 @@
     CC Visitor: <%= @visitor.identification%> 
     Reason Visit: <%= @reason.description%> 
     Message: <%= @appointment.message%>
-
+    <%= email_field_tag(@appointment.photo) %>

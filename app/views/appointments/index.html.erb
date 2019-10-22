@@ -11,6 +11,7 @@
             <div class="container takePhoto">
                 <div class="row">
                     <div class="col s12 m12">
+                        <div class="photo-container" id="results"></div>
                         <button class="take_button btn-floating" id="camera_launch" href="#modal2">
                         </button>
                     </div>
@@ -56,7 +57,7 @@
                     <i class="material-icons right">send</i>
                 </button>
                 <%= f.hidden_field :user_id, :value => nil %>
-                
+                <%= f.hidden_field :photo, :value => nil %>
             </div>      
         <% end %>
 </div>
@@ -100,7 +101,12 @@
     Webcam.attach('#mywebcam');
     function takescreenshot(){
         Webcam.snap(function(data){
-            $('#results').append("<h2>Here is you image: </h2><img width='300' src='"+data+"'>");
+            $('#results').html("<h2>Here is your image: </h2><img width='300' src='"+data+"'>");
+            $('#modal2').modal('close');
+            var raw_image_data = data.replace(/^data\:image\/\w+\;base64\,/, '');
+		
+		    document.getElementById('appointment_photo').value = raw_image_data;
+
         })
     }
 
