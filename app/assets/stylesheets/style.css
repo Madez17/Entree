@@ -96,3 +96,15 @@ button.btn-floating{
 .btn-floating:hover {
     background-color: #04cb26;
 } 
+
+.img-email img {
+    width: 75px;
+}
+
+.td-img {
+  background-color: #0C1946
+}
+
+.img_preview {
+    width: 300px;
+}
