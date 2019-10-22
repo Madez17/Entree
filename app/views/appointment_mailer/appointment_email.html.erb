@@ -1,27 +1,94 @@
-<table width="100%" bgcolor="#f6f8f1" border="0" cellpadding="0" cellspacing="0">
-<tr>
-    <td style="background: #4be5aa;">
-        <table class="content" align="center" cellpadding="0" cellspacing="0" border="0">
-            <tr>
-                <td height="70" style="padding: 0 20px 20px 0; " >
-                    <img src="" width="70" height="70" border="0" alt="" / >
+<body style="background-color:grey"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0"
+           width="550" bgcolor="white" style="border:0 solid black"> 
+        <tbody> 
+            <tr> 
+                <td align="center"> 
+                    <table align="center" border="0" cellpadding="0" 
+                           cellspacing="0" class="col-550" width="550"> 
+                        <tbody> 
+                            <tr> 
+                                <td align="center" style="background-color: ##0C1946; 
+                                           height: 70px;" class="img-email"> 
+  
+                                    <a href="#" style="text-decoration: none;"> 
+                                        <p style="color:white; font-weight:bold;"> 
+                                                  <%= image_tag "email.png"%>
+                                        </p> 
+                                    </a> 
+                                </td> 
+                            </tr> 
+                        </tbody> 
+                    </table> 
+                </td> 
+            </tr> 
+            <tr style="height: 50px;"> 
+                <td align="center" style="border: none; 
+                           border-bottom: 2px solid #4cb96b;  
+                           padding-right: 20px;padding-left:20px"> 
+  
+                    <p style="font-weight: bolder;font-size: 32px; 
+                              letter-spacing: 0.025em; 
+                              color:black;"> 
+                              Hi <%= @user.name%>! you have a email.
+                    </p> 
+                </td> 
+            </tr> 
+  
+            <tr style="display: inline-block;"> 
+                <td style="height: 150px; 
+                           padding: 20px; 
+                           border: none;  
+                           border-bottom: 2px solid #361B0E; 
+                           background-color: white;"> 
+                    
+                    <h3 style="text-align: left; 
+                               align-items: center;"> 
+                               You have a new visitor, waiting for you.
+                   </h3> 
+                    <p class="data" 
+                       style="text-align: justify-all; 
+                              align-items: center;  
+                              font-size: 15px; 
+                              padding-bottom: 16px;"> 
+                              <ul>
+                                <li>Name Visitor: <%= @visitor.name%> </li>
+                                <li>Last Name Visitor: <%= @visitor.lastname%> </li>
+                                <li>CC Visitor: <%= @visitor.identification%> </li>
+                                <li>Reason Visit: <%= @reason.description%></li>
+                                <li>Message: <%= @appointment.message%></li>
+                              </ul>
+                    </p> 
+
+                </td> 
+
+                <td>
+                <%= image_tag(@appointment.photo, class:"img_preview") %>
                 </td>
-            </tr>
-            <tr>
-                <td class="subhead" style="padding: 0 0 0 3px;">
-                <h4 style="font-size: 16px;">Hi <%= @user.name%> You have a visitor waiting for you at the door :)</h4>
-                </td>
-            </tr>
-        </table>
-    </td>
-</tr>
-</table>
+            </tr> 
+        </tbody> 
+    </table> 
+</body> 
 
 
 
-    Name Visitor: <%= @visitor.name%> 
-    Last Name Visitor: <%= @visitor.lastname%> 
-    CC Visitor: <%= @visitor.identification%> 
-    Reason Visit: <%= @reason.description%> 
-    Message: <%= @appointment.message%>
 
+
+                                        
+                                   
+
+                        
+
+
+            
+ 
+
+
+
+ 
+
+
+
+
+
+   

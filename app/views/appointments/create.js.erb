@@ -4,10 +4,12 @@
     <% end %>
 <% else %>
     $('form').trigger('reset');
-    $('.modal-content').append('<%=j render "send_email"%>')
-    $('.modal').modal('open');
+    $('#results').empty()
+    $('.modal-content').append('<%=j render "send_email"%>') 
+    $('.box').html('<i class="material-icons camera_style">face</i>') 
+    $('#modal').modal('open');
     setTimeout(()=> {
-        $('.modal').modal('close');
+        $('#modal').modal('close');
         $('.modal-content').empty();
     }, 5000)
 <% end %>

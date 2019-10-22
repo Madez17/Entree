@@ -83,3 +83,68 @@ body{
 #mywebcam {
     margin: 0 auto 45px auto;
 }
+.take_button{
+    background: transparent;
+    margin: 0 auto;
+}
+button.btn-floating{
+    background: #fefcfc;
+}
+.btn-floating i.cam{
+    color: #f00;
+}
+.btn-floating:hover {
+    background-color: #04cb26;
+
+} 
+
+.img-email img {
+    width: 75px;
+}
+
+.td-img {
+  background-color: #0C1946
+}
+
+.img_preview {
+    width: 300px;
+}
+
+.photo-container img{
+    border-radius: 13px;
+    border: 6px solid #ef0000;
+    margin: 16px auto;
+}
+.photo-container h2{
+    font-size: 40px;
+}
+.box{
+    border-radius: 13px;
+    border: 6px solid #ef0000;
+    margin: 16px auto;
+    width: 251px;
+    height: 191px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box img{
+    border-radius: 7px;
+    width: 240px;
+}
+.text_usr{
+    font-size:35px;
+}
+.camera_style{
+    font-size: 90px;
+    opacity: 0.8;
+}
+.cam{
+    fill: #EF0000;
+}
+.toast {
+    background-color: #EF0000;
+    color: white;
+    font-weight: bold;
+}
+

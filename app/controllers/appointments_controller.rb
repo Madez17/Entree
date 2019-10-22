@@ -14,15 +14,17 @@ class AppointmentsController < ApplicationController
                 @errors = @visitor.errors
                 render "create" and return
             end
-       end
-       appointment = Appointment.new(appointment_parameter)
-       appointment.visitor_id = @visitor.id
-       unless appointment.save
+       end        
+        appointment = Appointment.new(appointment_parameter)
+        appointment.visitor_id = @visitor.id
+        appointment.photo.attach(io: image_io, filename: 'phto_image') if image_io
+        unless appointment.save
             @errors = appointment.errors
             render "create" and return
-       end
-    #    AppointmentMailer.appointment_email(appointment).deliver_now
+        end
+        AppointmentMailer.appointment_email(appointment).deliver_now
     end
+
 
     def get_users
         @users = User.select(:name, :lastname, :id).all
@@ -36,5 +38,14 @@ class AppointmentsController < ApplicationController
 
     def appointment_parameter
         params.require(:appointment).permit(:reason_id, :message, :user_id)
+    end
+
+    def image_io
+        if params[:appointment][:photo] && params[:appointment][:photo] != "" 
+          decoded_image = Base64.decode64(params[:appointment][:photo])
+          StringIO.new(decoded_image)
+        else
+          nil
+        end
     end
 end
