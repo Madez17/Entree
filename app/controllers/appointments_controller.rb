@@ -25,6 +25,12 @@ class AppointmentsController < ApplicationController
         AppointmentMailer.appointment_email(appointment).deliver_now
     end
 
+    def test
+        appointment = Appointment.last
+        AppointmentMailer.appointment_email(appointment).deliver_now
+        redirect_to root_path
+    end
+
     def get_users
         @users = User.select(:name, :lastname, :id).all
         render json: @users
