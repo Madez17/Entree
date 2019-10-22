@@ -17,7 +17,7 @@ class AppointmentsController < ApplicationController
        end        
         appointment = Appointment.new(appointment_parameter)
         appointment.visitor_id = @visitor.id
-        appointment.photo.attach(io: image_io, filename: 'phto_image') if image_io
+        appointment.photo.attach(io: image_io, filename: "#{Time.now.strftime '%Y-%m-%d %H:%M:%S'}.jpg") if image_io
         unless appointment.save
             @errors = appointment.errors
             render "create" and return
