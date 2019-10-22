@@ -4,5 +4,11 @@ class Appointment < ApplicationRecord
   belongs_to :visitor
   validates :message, presence: true 
   has_one_attached :photo 
-  validates :photo, presence: true 
+  validate :has_photo
+
+
+  def has_photo    
+    errors.add(:smile, "Take a picture") unless photo.attached?
+  end
+  
 end

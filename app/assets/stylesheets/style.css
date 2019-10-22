@@ -88,13 +88,14 @@ body{
     margin: 0 auto;
 }
 button.btn-floating{
-    border: 1px solid white;
-    background: red;
-    height: 35px;
-    width: 35px;
+    background: #fefcfc;
+}
+.btn-floating i.cam{
+    color: #f00;
 }
 .btn-floating:hover {
     background-color: #04cb26;
+
 } 
 
 .img-email img {
@@ -108,3 +109,42 @@ button.btn-floating{
 .img_preview {
     width: 300px;
 }
+
+.photo-container img{
+    border-radius: 13px;
+    border: 6px solid #ef0000;
+    margin: 16px auto;
+}
+.photo-container h2{
+    font-size: 40px;
+}
+.box{
+    border-radius: 13px;
+    border: 6px solid #ef0000;
+    margin: 16px auto;
+    width: 251px;
+    height: 191px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box img{
+    border-radius: 7px;
+    width: 240px;
+}
+.text_usr{
+    font-size:35px;
+}
+.camera_style{
+    font-size: 90px;
+    opacity: 0.8;
+}
+.cam{
+    fill: #EF0000;
+}
+.toast {
+    background-color: #EF0000;
+    color: white;
+    font-weight: bold;
+}
+
