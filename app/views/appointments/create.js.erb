@@ -5,7 +5,8 @@
 <% else %>
     $('form').trigger('reset');
     $('#results').empty()
-    $('.modal-content').append('<%=j render "send_email"%>')
+    $('.modal-content').append('<%=j render "send_email"%>') 
+    $('.box').html('<i class="material-icons camera_style">face</i>') 
     $('#modal').modal('open');
     setTimeout(()=> {
         $('#modal').modal('close');
