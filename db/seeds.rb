@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
+
+def populate(file, model)
+    csv_text = File.read(Rails.root.join('lib', 'seeds', file))
+    csv = CSV.parse(csv_text, :headers => true)
+    csv.each do |row|
+        model.find_or_create_by(row.to_hash)
+    end
+end
+
+populate('users.csv', User)
+populate('roles.csv', Role)
+populate('reasons.csv', Reason)
