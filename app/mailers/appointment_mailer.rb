@@ -5,5 +5,5 @@ class AppointmentMailer < ApplicationMailer
     @visitor = appointment.visitor
     @reason = appointment.reason
     mail(to: @user.email, subject: 'You have a visitor')
-  end 
+  end  
 end

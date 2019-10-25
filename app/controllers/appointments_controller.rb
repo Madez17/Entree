@@ -31,6 +31,10 @@ class AppointmentsController < ApplicationController
         render json: @users
     end
 
+    def test
+        AppointmentMailer.hello_world_email.deliver_now
+        redirect_to root_path
+    end
     private
     def visitor_parameters
         params.require(:visitor).permit(:name, :lastname, :identification)

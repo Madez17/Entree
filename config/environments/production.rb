@@ -95,4 +95,5 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => "entreeapp.herokuapp.com" }
   config.action_controller.asset_host = 'https://entreeapp.herokuapp.com/'
   config.action_mailer.asset_host = config.action_controller.asset_host
+  config.action_mailer.perform_deliveries = true
 end
