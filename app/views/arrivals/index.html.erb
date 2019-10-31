@@ -1,0 +1,114 @@
+   
+<div class="row flex" id="mycontainer">
+<div class="content col s12 m5 title_app red-color" >
+    <h1 style= "font-family: 'Poiret One', cursive;">Entrée</h1>
+    <h3>...</h3>
+    <h3 style= "font-family: 'Poiret One', cursive;">"Ensure your access"</h3> 
+    <%= link_to "Go to back", "/", :class=>"waves-effect  btn-large gotoback" %>
+    
+</div>
+
+    <div class="container takePhoto content col s12 m7 title_app blue-color">
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="photo-container" id="results"></div>
+                 <h2 class="text_usr">Smile, take a picture </h2>
+
+                <div class="box">
+                   <i class="material-icons camera_style">face</i> 
+                </div>
+                <button class="take_button btn-floating btn-medium white pulse" id="camera_launch" href="#modal2">
+                     <i class="material-icons cam">camera_alt</i> 
+                </button>
+            </div>
+        </div>
+    </div>
+<div id="modal" class="modal white">
+    <div class="user_welcome modal-content container">
+    </div>
+  </div>
+
+<!-- Modal Photo -->
+<div id="modal2" class="modal white">
+<div class="modal-content2 container">
+    
+<div class="container">
+    <div class="row">
+        <div class="col s12 center-align">
+        <form action="http://localhost:5000/login" method="post"  id="student-form">    
+            <div id="my_camera" class="recognition-photo" style="width:320px; height:240px;"></div>
+            <div id="my_result"></div>
+            <input type="hidden" id="raw_image_data" name="image" value=""/>     
+            <p><button class="btn waves-effect waves-light">Press Enter</button></p>
+        </form>
+        </div>
+    </div>
+</div>
+©
+</div>
+</div>
+
+<script>
+    Webcam.set({
+        width: 320,
+        height: 240,
+        dest_width: 640,
+        dest_height: 480,
+        image_format: 'jpeg',
+        jpeg_quality: 90,
+        force_flash: false,
+        jpeg_quality: 90
+    })
+
+    function take_snapshot() {
+        Webcam.snap( function(data_uri) {
+            var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
+            console.log(raw_image_data);
+            document.getElementById('raw_image_data').value = raw_image_data;
+        } );
+    }
+
+    $(document).ready(function(){
+    // Plugin initialization
+        Webcam.attach( '#my_camera' );
+        $('ul.dropdown-content').css('opacity', 1);
+        $('#modal').modal();
+        $('#modal2').modal();
+        $('#camera_launch').on('click', function(e){
+            e.preventDefault();
+            $('#modal2').modal('open');    
+        })
+
+        $('#student-form').on('submit', function(e){
+            e.preventDefault()
+            take_snapshot();
+            var form = $(this);
+            var url = form.attr('action');
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: form.serialize(), // serializes the form's elements.
+                success: function(data)
+                {
+                    $('#modal2').modal('close');
+                    message = "";
+                    console.log(data)
+                    html = '<h2> Welcome </h2>'
+                    for (index in data) {
+                        html += `<li>${data[index].name} ${data[index].lastname}</li>`
+                    }
+                    $('.user_welcome').append(html);
+                    $('#modal').modal('open');
+                    setTimeout(()=>{
+                        window.location.href = "/"
+                    }, 2500)
+                },
+                error: function(err){
+                    $('#modal2').modal('close');
+                    alert('Verification Device Not Found')
+                }
+            });
+        })
+    })
+</script>
