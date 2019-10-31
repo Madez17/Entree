@@ -72,3 +72,4 @@ gem 'premailer-rails'
 gem 'mailjet'
 # managment credentials
 gem 'figaro'
+gem 'rack-cors', require: 'rack/cors'

@@ -4,6 +4,7 @@
             <h1 style= "font-family: 'Poiret One', cursive;">Entrée</h1>
             <h3>...</h3>
             <h3 style= "font-family: 'Poiret One', cursive;">"Ensure your access"</h3> 
+            <%= link_to "Go to back", "/", :class=>"waves-effect  btn-large gotoback" %>
         </div>
         
         <%= form_with model: @appointment, html:{autocomplete:"off"}, class: "content col s12 m7 title_app blue-color" do |f| %>
