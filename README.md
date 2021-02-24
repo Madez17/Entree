@@ -1,24 +1,17 @@
-# README
+# Entree App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Imgur](https://i.imgur.com/dXwsiey.png)
 
-Things you may want to cover:
+- Registration application, take the picture, fill out the form and send the notification to the target user, developed in ruby on rails and JavaScript
 
-* Ruby version
+## Technologies
 
-* System dependencies
+``` 
+* Ruby on Rails
+* JavaScript
+* HTML
+* CSS
+* CoffeScript
+* ... 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
